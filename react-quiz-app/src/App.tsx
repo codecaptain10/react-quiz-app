@@ -42,7 +42,11 @@ function App() {
     setLoading(false);
   };
 
-  const checkAnswer = (event: React.MouseEvent<HTMLButtonElement>) => {};
+  const checkAnswer = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (!gameOver) {
+      const answer = event.currentTarget.value;
+    }
+  };
 
   const nextQuestion = () => {};
 
