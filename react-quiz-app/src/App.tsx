@@ -57,17 +57,24 @@ function App() {
 
       {!gameOver ? <p className='score'>Score:</p> : null}
       {loading ? <p>Loading Questions ...</p> : null}
-      {/* <QuestionCard
-        questionNr={number + 1}
-        totalQuestions={TOTAL_QUESTIONS}
-        question={questions[number].question}
-        answers={questions[number].answers}
-        userAnswer={userAnswers ? userAnswers[number] : undefined}
-        callback={checkAnswer}
-      /> */}
-      <button className='next' onClick={nextQuestion}>
-        Next Question
-      </button>
+      {!loading && !gameOver && (
+        <QuestionCard
+          questionNr={number + 1}
+          totalQuestions={TOTAL_QUESTIONS}
+          question={questions[number].question}
+          answers={questions[number].answers}
+          userAnswer={userAnswers ? userAnswers[number] : undefined}
+          callback={checkAnswer}
+        />
+      )}
+      {!gameOver &&
+      !loading &&
+      userAnswers.length === number + 1 &&
+      number !== TOTAL_QUESTIONS - 1 ? (
+        <button className='next' onClick={nextQuestion}>
+          Next Question
+        </button>
+      ) : null}
     </div>
   );
 }
