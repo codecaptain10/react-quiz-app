@@ -27,6 +27,8 @@ function App() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
 
+  //console.log(questions);
+
   const startQuiz = async () => {
     setLoading(true);
     setGameOver(false);
@@ -47,11 +49,14 @@ function App() {
   return (
     <div className='App'>
       <h1>React Quiz App</h1>
-      <button className='start' onClick={startQuiz}>
-        Start
-      </button>
-      <p className='score'>Score:</p>
-      <p>Loading Questions ...</p>
+      {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
+        <button className='start' onClick={startQuiz}>
+          Start
+        </button>
+      ) : null}
+
+      {!gameOver ? <p className='score'>Score:</p> : null}
+      {loading ? <p>Loading Questions ...</p> : null}
       {/* <QuestionCard
         questionNr={number + 1}
         totalQuestions={TOTAL_QUESTIONS}
