@@ -3,23 +3,42 @@ import { fetchQuizQuestions } from "./API";
 //Coponents
 import QuestionCard from "./components/QuastionCard";
 //Types
+import { QuestionState } from "./API";
+
+type AnswerObject = {
+  question: string;
+  answer: string;
+  correct: boolean;
+  correctAnswer: string;
+};
 
 const TOTAL_QUESTIONS = 10;
 
-console.log(fetchQuizQuestions(TOTAL_QUESTIONS));
+//console.log(fetchQuizQuestions(TOTAL_QUESTIONS));
 
 function App() {
   //Link to Question from API: https://opentdb.com/api.php?amount=10&category=18&type=multiple
   //Use catamaran fonr: font-family: 'Catamaran', sans-serif;
 
   const [loading, setLoading] = useState(false);
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
-  const [userAnswers, setUserAnswers] = useState([]);
+  const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
 
-  const startQuiz = async () => {};
+  const startQuiz = async () => {
+    setLoading(true);
+    setGameOver(false);
+
+    const newQuestions = await fetchQuizQuestions(TOTAL_QUESTIONS);
+    //console.log(newQuestions);
+    setQuestions(newQuestions);
+    setScore(0);
+    setUserAnswers([]);
+    setNumber(0);
+    setLoading(false);
+  };
 
   const checkAnswer = (event: React.MouseEvent<HTMLButtonElement>) => {};
 
