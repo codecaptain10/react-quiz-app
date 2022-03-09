@@ -9,6 +9,7 @@ html{
 
 body{
     background-image:url(${BGCImage});
+    background-position: center center;
     background-size:cover;
     margin:0;
     padding:0 20px;
@@ -52,5 +53,24 @@ export const Wrapper = styled.div`
     font-weight: 400;
     text-align: center;
     margin: 20px;
+  }
+
+  .start,
+  .next {
+    width: 200px;
+    cursor: pointer;
+    background-color: linear-gradient(180deg, #fff, #ffcc91);
+    border: 2px solid #d38558;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    height: 40px;
+    margin: 20px 0;
+    padding: 0 40px;
+    margin-left: calc(50% - 100px);
+    margin-right: calc(50% - 100px);
+  }
+
+  .start {
+    max-width: 200px;
   }
 `;
