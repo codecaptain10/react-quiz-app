@@ -5,7 +5,7 @@ import QuestionCard from "./components/QuastionCard";
 //Types
 import { QuestionState } from "./API";
 
-type AnswerObject = {
+export type AnswerObject = {
   question: string;
   answer: string;
   correct: boolean;
